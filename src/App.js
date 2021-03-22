@@ -1,25 +1,55 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Cart from './components/Cart';
+import Products from './components/Products';
+import Header from './components/Header';
+import data from './data';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [ item, setItem ] = useState([]);
+  const [ addAgainItem, setAddAgainItem ] = useState(false);
+  console.log(addAgainItem);
+
+  const pushInCart = (infoItem) => {
+    setItem([...item, infoItem]);   
+  };
+  
+  const increaseQuantity = (id) => {
+    item.forEach(x => {
+      if(x.id === id) {
+        x.quantity++;
+      };     
+    })
+    setItem([...item]);
+  };
+
+  const increaseQuantityUpdateItems = (uptdateItems) => {
+    setItem([...uptdateItems]);
+  };
+
+  const deleteItem = (id) => {
+    setItem(item => item.filter(item => item.id !== id));
+    setAddAgainItem(!addAgainItem);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      <Cart 
+        key={item.id}
+        items={item}
+        increaseQuantityUpdateItems={increaseQuantityUpdateItems}
+        deleteItem={deleteItem}
+      />
+      <Products 
+        listProducts={[...data]}
+        addCart={pushInCart}
+        increaseQuantity={increaseQuantity}
+        addAgainItem={addAgainItem}
+      />
     </div>
-  );
-}
+  )
+
+};
 
 export default App;

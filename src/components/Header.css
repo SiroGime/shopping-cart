@@ -1,0 +1,14 @@
+header {
+    width: 100%;
+    background: linear-gradient(to right,
+    #3b4574 0%,
+    #676294 100%);
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+header h1 {
+    font-size: 2rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+    color: #fff;
+}

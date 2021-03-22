@@ -1,0 +1,20 @@
+.products__container {
+    width: 100%;
+    background: linear-gradient(to right,
+    #3b4574 0%,
+    #676294 100%);;
+}
+
+.products__container h2 {
+    padding: 1rem;
+    font-size: 2rem;
+    color: #eee;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    padding-top: 0;
+}
